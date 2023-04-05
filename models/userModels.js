@@ -26,7 +26,7 @@ module.exports.getLoginAuth = async function (usEmail, usPassword) {
     try {
         let sql = `select * from users where us_email = '${usEmail}' and us_password = '${usPassword}'`
         let result = await pool.query(sql)
-        return {status: 200, data: result.rows}
+        return {status: 200, data: result.rows[0]}
     } catch(e) {
         console.log(e)
         return {status: 500, data: e}
