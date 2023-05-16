@@ -22,6 +22,21 @@ router.get('/login/email/:email/pass/:pass', async function (req, res, next) {
     res.status(result.status).send(result.data);
 });
 
+router.get('/:id(\\d+)/ip', async function (req, res, next) {
+    let id = req.params.id;
+    console.log("Retrieving user with id " + id);
+    let result = await userModels.getUserIpById(id);
+    res.status(result.status).send(result.data.us_ip);
+});
+
+router.put('/:id(\\d+)/ip/:ip', async function (req, res, next) {
+    let id = req.params.id;
+    let ip = req.params.ip;
+    console.log("Updating user with id " + id);
+    let result = await userModels.updateUserIpById(id, ip);
+    res.status(result.status).send(result.data);
+});
+
 router.post('/', async function (req, res, next) {
     let newUser = req.body;
     let us_name = newUser.us_name;

@@ -9,11 +9,6 @@ var debug = require('debug')('teste01-esp32:server');
 const http = require("http");
 const fs = require("fs");
 
-
-const options = {
-  key: fs.readFileSync("./bin/ca.key"),
-  cert: fs.readFileSync("./bin/ca.crt"),
-};
 /**
  * Get port from environment and store in Express.
  */
@@ -25,7 +20,7 @@ app.set('port', port);
  * Create HTTP server.
  */
 
-var server = http.createServer(options, app);
+var server = http.createServer(app);
 
 /**
  * Listen on provided port, on all network interfaces.
