@@ -29,7 +29,7 @@ router.get('/:id(\\d+)/ip', async function (req, res, next) {
     res.status(result.status).send(result.data.us_ip);
 });
 
-router.put('/:id(\\d+)/ip/:ip', async function (req, res, next) {
+router.get('/:id(\\d+)/ip/:ip', async function (req, res, next) {
     let id = req.params.id;
     let ip = req.params.ip;
     console.log("Updating user with id " + id);
